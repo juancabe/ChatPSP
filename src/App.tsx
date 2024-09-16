@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./App.css";
+import Chat from "./components/Chat";
 
 enum SesState {
   LogIn = "Log In",
@@ -212,6 +213,9 @@ function App() {
             </form>
           </div>
         </div>
+      </div>
+      <div className="chat-container">
+        <Chat session_id={logInSessionId} username={logInUsername}></Chat>
       </div>
     </div>
   );
