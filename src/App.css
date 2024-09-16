@@ -28,7 +28,7 @@
   pointer-events: none;
 }
 
-.login-form-container {
+.form-container {
   right: 0px;
   top: 0px;
   position: absolute;
@@ -43,6 +43,16 @@
   border: 0px;
   padding: 3px;
   margin: 2px;
+}
+
+.sumbit-info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-info {
+  font-size: medium;
 }
 
 .login-input:focus {
