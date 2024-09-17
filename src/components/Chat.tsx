@@ -47,7 +47,7 @@ export default function Chat({ session_id, username }: ChatProps): JSX.Element {
         if (newMessages.length > 0)
           setMessages((prevMessages) => [...prevMessages, ...newMessages]);
       } catch (e) {
-        console.log("Error while getting new messages");
+        console.log("Error while getting new messages.");
         console.error(e);
       }
     };
