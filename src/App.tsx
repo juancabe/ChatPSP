@@ -29,7 +29,6 @@ function App() {
   const [registerInfo, setRegisterInfo] = useState<string>(
     "Already have an account?"
   );
-
   return (
     <div className="app-container">
       <div className="upper-view">
