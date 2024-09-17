@@ -215,7 +215,7 @@ function App() {
         </div>
       </div>
       <div className="chat-container">
-        <Chat session_id={logInSessionId}></Chat>
+        <Chat session_id={logInSessionId} username={logInUsername}></Chat>
       </div>
     </div>
   );

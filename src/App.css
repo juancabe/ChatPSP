@@ -2,8 +2,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 90vh;
-  text-align: center;
+}
+
+.chat-container {
+  display: flex;
+  align-items: center;
+  width: fit-content;
 }
 
 .upper-view {
@@ -11,7 +15,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 90vw;
+  width: 95vw;
+  height: 100px;
 }
 
 .session-button-container {

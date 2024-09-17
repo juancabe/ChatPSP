@@ -1,0 +1,138 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: min(98vw, 900px);
+  height: calc(97vh - 100px);
+}
+.messages-container {
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.message-container {
+  margin: 3px;
+  text-align: left;
+  margin-right: 30px;
+}
+
+.message-container.own {
+  text-align: right;
+  margin-left: 30px;
+}
+
+.message-time-container {
+  max-width: min(calc(97vw - 30px), calc(900px - 30px));
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  padding-left: 5px;
+  padding-bottom: 3px;
+  padding-top: 1px;
+  padding-right: 3px;
+  background-color: #ffffff26;
+  border: 1px groove #00ffff44;
+  border-radius: 0 10px 10px 10px;
+  width: fit-content;
+}
+
+.message-time-container.own {
+  background-color: #ffffff39;
+  border: 1px groove #ff000044;
+  border-radius: 10px 0 10px 10px;
+}
+
+.mov-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.mov-container.own {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.user-container {
+  border: 1px groove #00ffff44;
+  border-radius: 10px 10px 0 0;
+  padding: 3px;
+  background-color: #00ffff2f;
+  border-bottom: none;
+  width: fit-content;
+}
+
+.user-container.own {
+  background-color: #ff00002f;
+  border: 1px groove #ff000044;
+  left: 100%;
+}
+
+.user {
+  font-size: 0.875em;
+  color: #bbabbb;
+  text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.422);
+}
+
+.message {
+  word-break: break-all;
+  user-select: text;
+}
+
+.time {
+  color: #babbbb;
+  font-size: small;
+}
+
+.messages-container {
+  --sb-track-color: #001d1d;
+  --sb-thumb-color: #730000;
+  --sb-size: 7px;
+}
+
+.messages-container::-webkit-scrollbar {
+  width: var(--sb-size);
+}
+
+.messages-container::-webkit-scrollbar-track {
+  background: var(--sb-track-color);
+  border-radius: 3px;
+}
+
+.messages-container::-webkit-scrollbar-thumb {
+  background: var(--sb-thumb-color);
+  border-radius: 3px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+  .messages-container {
+    scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+  }
+}
+
+.message-form {
+  background-color: #010101;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 70%;
+  border: 3px groove #ff000044;
+  border-radius: 30px;
+}
+
+.message-form-input {
+  background-color: #010101;
+  border: 3px groove #ff000044;
+  border-radius: 30px;
+  border: 0;
+  outline: 0;
+  width: 100%;
+  padding: 5px;
+  padding-left: 7px;
+}
+
+.message-form-button {
+  border: 3px groove #ff000044;
+  border-radius: 30px;
+}

@@ -154,6 +154,24 @@ void add_cors_headers(httplib::Response &res)
 	res.set_header("Access-Control-Allow-Headers", "Content-Type");				// Allowed headers
 }
 
+void supListEndComma(std::string &toSup)
+{
+	// Find open arr [
+
+	for (int i = toSup.length(); i >= 0; i--)
+	{
+		if (toSup[i] == ']' && toSup[i - 1] == ',')
+		{
+			for (int j = i - 1; j < toSup.length() - 1; j++)
+			{
+				toSup[j] = toSup[j + 1];
+			}
+			toSup.resize(toSup.length() - 1);
+			return;
+		}
+	}
+}
+
 int main()
 {
 	sqlite3 *db;
@@ -256,10 +274,10 @@ int main()
 
 						add_cors_headers(res); });
 
-	svr.Get("/send_message", [&](const httplib::Request &req, httplib::Response &res)
-					{
+	svr.Post("/send_message", [&](const httplib::Request &req, httplib::Response &res)
+					 {
 						int session_id = std::stoi(req.get_param_value("session_id"));
-						std::string message = req.get_param_value("message");
+						std::string message = req.body;
 						unsigned int timestamp = time(NULL);
 
 						for (auto user_session : session_ids)
@@ -269,6 +287,7 @@ int main()
 								messages.push_back({user_session, message, timestamp});
 								std::cout << "Message received: " << message << std::endl;
 								res.set_content("{\"result\" : \"success\", \"general_id\" : " + std::to_string(general_id) + "}", "text/plain");
+								add_cors_headers(res);
 								return;
 							}
 						}
@@ -290,6 +309,7 @@ int main()
 							}
 						}
 						response += "], \"general_id\" : " + std::to_string(general_id) + "}";
+						supListEndComma(response);
 						res.set_content(response, "text/plain");
 
 						add_cors_headers(res); });
