@@ -1,50 +1,65 @@
-# React + TypeScript + Vite
+# ChatPSP
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+ChatPSP is a simple web-based chat application where users can register, log in, and chat with others in real-time. It is built using React for the frontend and C++ (with SQLite) for the backend, with communication between the frontend and backend over HTTPS. The app enables user authentication and real-time messaging with periodic message fetching.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- User Registration: Users can create an account with a username and password.
+- User Login: Users can log in to the chat system, and their session is maintained during the interaction.
+- Real-Time Chat: After logging in, users can send and receive messages in real time. Messages are updated every second.
+- Message Persistence: Messages are stored in the backend using a list and can be fetched by users.
+- User Authentication: The backend securely handles user registration, login, and message sending.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Technologies Used
 
-- Configure the top-level `parserOptions` property like this:
+- Frontend:
+  - React (with TypeScript)
+  - CSS for styling
+- Backend:
+  - C++ (with SQLite3 for database storage)
+  - HTTP/HTTPS server (using httplib library with OpenSSL for HTTPS support)
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## Installation
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+### Backend
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+- ```js
+  $ git clone https://github.com/juancabe/ChatPSP
+  $ cd ./ChatPSP/server/
+  $ make
+  ```
+- Make sure you have installed sqlite3 and openssl on your system.
+- And run server `main`; don't forget to provide your own SSH certificate.
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+### Frontend
+
+- ```js
+  $ npm install
+  $ npm run dev
+  ```
+- The frontend should now be available at http://localhost:5173
+
+## Usage
+
+### User Authentication
+
+- Registration:
+  - A new user can create an account by providing a username and password.
+  - If the username already exists, an error message is displayed.
+- Login:
+  - Users can log in with valid credentials. If the username does not exist or the password is incorrect, an error message is shown.
+
+### Chat
+
+After login, users can send and receive messages in real time.
+Messages are updated every second using setInterval in the frontend.
+
+## Contributing
+
+Contributions are welcome! Please submit a pull request or open an issue for any suggestions or improvements.
+
+## License
+
+This project is licensed under the MIT License.

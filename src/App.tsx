@@ -26,9 +26,8 @@ function App() {
   const [logInPassword, setLogInPassword] = useState<string>("");
   const [logInSessionId, setLogInSessionId] = useState<number>(0);
   const [logInInfo, setLogInInfo] = useState<string>("Don't have an account?");
-  const [registerInfo, setRegisterInfo] = useState<string>(
-    "Already have an account?"
-  );
+  const [registerInfo, setRegisterInfo] = useState<string>("Already a user?");
+
   return (
     <div className="app-container">
       <div className="upper-view">
