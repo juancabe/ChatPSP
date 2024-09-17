@@ -44,7 +44,8 @@ export default function Chat({ session_id, username }: ChatProps): JSX.Element {
         const response = await fetch(url + lastTimestamp);
         const parsed: GetMessagesResponse = await response.json();
         const newMessages = parsed.messages;
-        setMessages((prevMessages) => [...prevMessages, ...newMessages]);
+        if (newMessages.length > 0)
+          setMessages((prevMessages) => [...prevMessages, ...newMessages]);
       } catch (e) {
         console.log("Error while getting new messages");
         console.error(e);
@@ -64,6 +65,7 @@ export default function Chat({ session_id, username }: ChatProps): JSX.Element {
     <>
       {session_id !== 0 ? (
         <div className="main-container">
+          <div className="fade" />
           <div className="messages-container">
             {messages.map((value) => {
               const own = username == value.username ? "own" : "";

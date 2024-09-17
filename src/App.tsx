@@ -36,7 +36,7 @@ function App() {
         <div className="session-button-container">
           <button className="session-button hidden">{sesState}</button>
         </div>
-        <h1>ChatPSP</h1>
+        <h1 className="title-h1">ChatPSP</h1>
         <div className="session-button-container">
           <button
             className={

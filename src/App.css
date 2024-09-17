@@ -19,13 +19,27 @@
   height: 100px;
 }
 
+.title-h1 {
+  font-size: calc(7vh);
+}
+
 .session-button-container {
   position: relative;
 }
 
 .session-button {
-  font-size: medium;
-  padding: 0.3rem;
+  font-size: calc(2vh);
+  padding: 10px;
+  border-radius: 20px;
+  border: 0px;
+}
+
+.session-button:hover {
+  background-color: #434343;
+}
+
+.session-button:active {
+  background-color: #232323;
 }
 
 .hidden {
@@ -58,6 +72,9 @@
 
 .login-info {
   font-size: medium;
+}
+.login-info:hover {
+  color: #a4a4a4;
 }
 
 .login-input:focus {

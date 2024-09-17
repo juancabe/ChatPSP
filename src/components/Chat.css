@@ -12,14 +12,28 @@
   height: 100%;
 }
 
+.fade {
+  width: 100%;
+  height: calc(97vh / 10);
+  position: absolute;
+  background: rgb(24, 24, 24);
+  background: linear-gradient(
+    0deg,
+    rgba(24, 24, 24, 0) 0%,
+    rgba(24, 24, 24, 0.7) 69%,
+    rgba(24, 24, 24, 1) 100%
+  );
+}
+
 .message-container {
-  margin: 3px;
-  text-align: left;
+  margin: 5px;
   margin-right: 30px;
+  text-align: left;
 }
 
 .message-container.own {
-  text-align: right;
+  text-align: left;
+  margin-right: 5px;
   margin-left: 30px;
 }
 
@@ -122,6 +136,7 @@
 }
 
 .message-form-input {
+  font-size: medium;
   background-color: #010101;
   border: 3px groove #ff000044;
   border-radius: 30px;
