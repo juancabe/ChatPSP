@@ -30,7 +30,7 @@ ChatPSP is a simple web-based chat application where users can register, log in,
   $ cd ./ChatPSP/server/
   $ make
   ```
-- Make sure you have installed sqlite3 and openssl on your system.
+- Make sure you have installed and openssl on your system.
 - And run server `main`; don't forget to provide your own SSH certificate.
 
 ### Frontend
