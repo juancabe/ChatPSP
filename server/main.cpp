@@ -226,17 +226,18 @@ int main()
 						std::cout << "Login request for user: " << username << std::endl;
 						std::cout << "Password: " << password << std::endl;
 
-						for (auto user_session : session_ids)
-						{
-							if (user_session.username == username)
-							{
-								res.set_content("{\"result\" : \"already_logged_in\", \"session_id\" : " + std::to_string(user_session.session_id) + ", \"general_id\" : " + std::to_string(general_id) + "}", "text/plain");
-								add_cors_headers(res);
-								return;
-							}
-						}
-
 						int loginResult = loginUser(db, username, password);
+						if (loginResult == LOGIN_NO_ERROR)
+							for (auto user_session : session_ids)
+							{
+								if (user_session.username == username)
+								{
+									res.set_content("{\"result\" : \"already_logged_in\", \"session_id\" : " + std::to_string(user_session.session_id) + ", \"general_id\" : " + std::to_string(general_id) + "}", "text/plain");
+									add_cors_headers(res);
+									return;
+								}
+							}
+
 						if (loginResult == LOGIN_NO_ERROR)
 						{
 							int session_id = rand();

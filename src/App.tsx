@@ -19,6 +19,16 @@ interface RegisterResponse {
   result: string;
 }
 
+async function hashSHA256(message: string) {
+  const msgBuffer = new TextEncoder().encode(message); // Encode the string as bytes
+  const hashBuffer = await crypto.subtle.digest("SHA-256", msgBuffer); // Hash the message
+  const hashArray = Array.from(new Uint8Array(hashBuffer)); // Convert buffer to byte array
+  const hashHex = hashArray
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join(""); // Convert bytes to hex string
+  return hashHex;
+}
+
 function App() {
   const [sesState, setSesState] = useState<SesState>(SesState.LogIn);
 
@@ -61,8 +71,11 @@ function App() {
                 console.log("Username: ", logInUsername);
                 console.log("Password: ", logInPassword);
                 try {
+                  const logInPasswordHashed: string = await hashSHA256(
+                    logInPassword
+                  );
                   const response = await fetch(
-                    `https://www.chatpsp.run.place/login?username=${logInUsername}&password=${logInPassword}`
+                    `https://www.chatpsp.run.place/login?username=${logInUsername}&password=${logInPasswordHashed}`
                   );
                   console.log("Response: ", response);
                   const data: LoginResponse = await response.json();
@@ -145,8 +158,11 @@ function App() {
                 console.log("Username: ", logInUsername);
                 console.log("Password: ", logInPassword);
                 try {
+                  const logInPasswordHashed: string = await hashSHA256(
+                    logInPassword
+                  );
                   const response = await fetch(
-                    `https://www.chatpsp.run.place/register?username=${logInUsername}&password=${logInPassword}`
+                    `https://www.chatpsp.run.place/register?username=${logInUsername}&password=${logInPasswordHashed}`
                   );
                   console.log("Response: ", response);
                   const data: RegisterResponse = await response.json();
