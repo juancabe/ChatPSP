@@ -32,7 +32,7 @@ function App() {
     <div className="app-container">
       <div className="upper-view">
         <div className="session-button-container">
-          <button className="session-button hidden">{sesState}</button>
+          <button className="session-button hidden">Log In</button>
         </div>
         <h1 className="title-h1">ChatPSP</h1>
         <div className="session-button-container">
@@ -46,7 +46,7 @@ function App() {
               );
             }}
           >
-            {sesState}
+            Log In
           </button>
           <div
             className={

@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   width: min(98vw, 900px);
-  height: calc(97vh - 100px);
+  height: calc(98dvh - 100px);
 }
 .messages-container {
   overflow: auto;
@@ -14,7 +14,7 @@
 
 .fade {
   width: 100%;
-  height: calc(97vh / 10);
+  height: calc(97dvh / 10);
   position: absolute;
   background: rgb(24, 24, 24);
   background: linear-gradient(
@@ -126,6 +126,7 @@
 }
 
 .message-form {
+  margin-top: 1dvh;
   background-color: #010101;
   display: flex;
   flex-direction: row;
@@ -150,4 +151,37 @@
 .message-form-button {
   border: 3px groove #ff000044;
   border-radius: 30px;
+}
+
+@media (prefers-color-scheme: light) {
+  .fade {
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.7) 69%,
+      rgb(255, 255, 255) 100%
+    );
+  }
+
+  .message-form {
+    background-color: #eeeeee;
+    border: 3px groove #000000;
+  }
+
+  .message-form-input {
+    background-color: #eeeeee;
+    border: 0;
+  }
+
+  .message-form-button {
+    border: 3px groove #000000;
+    border-radius: 30px;
+  }
+
+  .messages-container {
+    --sb-track-color: #0069693f;
+    --sb-thumb-color: #bd000050;
+    --sb-size: 7px;
+  }
 }

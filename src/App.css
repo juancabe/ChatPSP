@@ -1,3 +1,6 @@
+@media only screen and (hover: none) and (pointer: coarse) {
+}
+
 .app-container {
   display: flex;
   flex-direction: column;
@@ -48,12 +51,13 @@
 }
 
 .form-container {
-  right: 0px;
-  top: 0px;
+  right: 4px;
+  top: 4px;
   position: absolute;
   background-color: #242424;
   padding: 6px;
   border-radius: 6px;
+  max-width: 40vw;
 }
 
 .login-input {
@@ -61,6 +65,7 @@
   border-radius: 0%;
   border: 0px;
   padding: 3px;
+  max-width: 30vw;
   margin: 2px;
 }
 
@@ -83,4 +88,16 @@
 
 .login-button {
   margin-top: 6px;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-radius: 4px;
+}
+
+@media (prefers-color-scheme: light) {
+  .session-button {
+    border: 2px solid black;
+  }
+
+  .form-container {
+    background-color: #c9c9c9;
+  }
 }
